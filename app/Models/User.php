@@ -2,10 +2,15 @@
 
 namespace App\Models;
 
+use App\Http\QueryFilters\Name;
+use App\Http\QueryFilters\Email;
+use App\Http\QueryFilters\Latest;
+use App\Http\QueryFilters\Oldest;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Pipeline\Pipeline;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
@@ -41,4 +46,19 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public static function getAll()
+    {
+        return app(Pipeline::class)
+            ->send(User::query())
+            ->through([
+                Name::class,
+                Email::class,
+                Latest::class,
+                Oldest::class
+            ])
+            ->thenReturn()
+            ->paginate(4)
+            ->withQueryString();
+    }
 }
