@@ -47,7 +47,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public static function getAll()
+    public static function getAll(int $items = 4)
     {
         return app(Pipeline::class)
             ->send(User::query())
@@ -58,7 +58,7 @@ class User extends Authenticatable
                 Oldest::class
             ])
             ->thenReturn()
-            ->paginate(4)
+            ->paginate($items)
             ->withQueryString();
     }
 }
