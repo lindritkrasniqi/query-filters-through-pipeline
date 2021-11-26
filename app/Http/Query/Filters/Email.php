@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\QueryFilters;
+namespace App\Http\Query\Filters;
 
 use Illuminate\Database\Eloquent\Builder;
 
-class Name extends Filter
+class Email extends Filter
 {
     protected function apply(Builder $builder): Builder
     {

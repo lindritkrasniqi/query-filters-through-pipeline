@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
-use App\Http\QueryFilters\Name;
-use App\Http\QueryFilters\Email;
-use App\Http\QueryFilters\Latest;
-use App\Http\QueryFilters\Oldest;
+use App\Http\Query\Filters\Name;
+use App\Http\Query\Filters\Email;
+use App\Http\Query\Filters\Latest;
+use App\Http\Query\Filters\Oldest;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
