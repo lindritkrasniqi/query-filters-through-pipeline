@@ -48,51 +48,8 @@
         </div>
     </div>
 
-    {{-- <table class="table-auto w-full mt-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
-        <thead class="text-xs font-semibold uppercase text-gray-400 bg-gray-50">
-            <tr>
-                <th class="p-2 whitespace-nowrap">
-                    <div class="font-semibold text-left">Name</div>
-                </th>
-                <th class="p-2 whitespace-nowrap">
-                    <div class="font-semibold text-left">Email</div>
-                </th>
-                <th class="p-2 whitespace-nowrap">
-                    <div class="font-semibold text-left">Spent</div>
-                </th>
-                <th class="p-2 whitespace-nowrap">
-                    <div class="font-semibold text-center">Country</div>
-                </th>
-            </tr>
-        </thead>
-        <tbody class="text-sm divide-y divide-gray-100">
-            @foreach ($users as $user)
-
-                <tr>
-                    <td class="p-2 whitespace-nowrap">
-                        <div class="flex items-center">
-                            <div class="w-10 h-10 flex-shrink-0 mr-2 sm:mr-3"><img class="rounded-full"
-                                    src="https://i.pravatar.cc/150?u={{ $user->id }}" width="40" height="40"
-                                    alt="{{ $user->name }}"></div>
-                            <div class="font-medium text-gray-800">{{ $user->name }}</div>
-                        </div>
-                    </td>
-                    <td class="p-2 whitespace-nowrap">
-                        <div class="text-left">{{ $user->email }}</div>
-                    </td>
-                    <td class="p-2 whitespace-nowrap">
-                        <div class="text-left font-medium text-green-500">${{ rand(1000, 10000) . '.' . rand(10, 99) }}
-                        </div>
-                    </td>
-                    <td class="p-2 whitespace-nowrap">
-                        <div class="text-lg text-center">🇺🇸</div>
-                    </td>
-                </tr>
-
-            @endforeach
-
-        </tbody>
-    </table> --}}
+    <users-vue :users="{{ json_encode($users->items()) }}" :query="{{ json_encode((object) request()->query()) }}">
+    </users-vue>
 
 @endsection
 
